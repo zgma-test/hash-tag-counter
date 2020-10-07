@@ -1,0 +1,180 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "3997e3fe-fee3-4ca4-abca-233fd0da4108": {
+        "id": "3997e3fe-fee3-4ca4-abca-233fd0da4108",
+        "parent": null,
+        "name": "hash-tag-counter",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "da1d74a0-ff68-4c27-b504-26a1c9e272ec",
+          "c0f71961-d190-499a-ad22-5cd3245044ce"
+        ],
+        "isRemovable": false,
+        "filePath": "hash-tag-counter"
+      },
+      "da1d74a0-ff68-4c27-b504-26a1c9e272ec": {
+        "id": "da1d74a0-ff68-4c27-b504-26a1c9e272ec",
+        "parent": "3997e3fe-fee3-4ca4-abca-233fd0da4108",
+        "name": "lambda.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "hash-tag-counter/lambda.js",
+        "triggers": [
+          {
+            "resourceName": "kinesishashTagStream",
+            "config": {
+              "StartingPosition": "TRIM_HORIZON",
+              "BatchSize": 100
+            }
+          }
+        ],
+        "config": {
+          "runtime": "nodejs10.x",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "cursor": {
+          "lineNumber": 1,
+          "column": 1
+        },
+        "lastUpdated": 1602053660445
+      },
+      "c0f71961-d190-499a-ad22-5cd3245044ce": {
+        "id": "c0f71961-d190-499a-ad22-5cd3245044ce",
+        "parent": "3997e3fe-fee3-4ca4-abca-233fd0da4108",
+        "name": "push-test-data.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "hash-tag-counter/push-test-data.js",
+        "triggers": [
+          {
+            "resourceName": "apigpopulateHashTagDataProxypopulatepost",
+            "config": {}
+          }
+        ],
+        "config": {
+          "runtime": "nodejs10.x",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "cursor": {
+          "lineNumber": 45,
+          "column": 38
+        }
+      }
+    },
+    "openFiles": [
+      "da1d74a0-ff68-4c27-b504-26a1c9e272ec",
+      "c0f71961-d190-499a-ad22-5cd3245044ce"
+    ],
+    "currentFileId": "da1d74a0-ff68-4c27-b504-26a1c9e272ec",
+    "resources": {
+      "ddbHashTags": {
+        "name": "ddbHashTags",
+        "type": "DynamoDB",
+        "config": {
+          "mode": 0,
+          "table": {
+            "arn": "",
+            "name": "HashTags",
+            "partitionKey": "Application",
+            "partitionKeyType": "S",
+            "hasSortKey": true,
+            "sortKey": "HashTag",
+            "sortKeyType": "S",
+            "mode": 0
+          }
+        }
+      },
+      "kinesishashTagStream": {
+        "name": "kinesishashTagStream",
+        "type": "Kinesis",
+        "config": {
+          "mode": 0,
+          "StreamName": "hash-tag-stream",
+          "shards": 1,
+          "triggerParams": {
+            "StartingPosition": "TRIM_HORIZON",
+            "BatchSize": 100
+          }
+        },
+        "globallyEditable": true
+      },
+      "apigpopulateHashTagDataProxypopulatepost": {
+        "name": "apigpopulateHashTagDataProxypopulatepost",
+        "type": "API_GATEWAY",
+        "config": {
+          "apiMode": 0,
+          "apiName": "populate-hash-tag-data-proxy",
+          "endpointType": "EDGE",
+          "resourceMode": 0,
+          "resourceName": "populate",
+          "resourcePath": "/populate",
+          "restMethod": "POST",
+          "proxyIntegration": true,
+          "enableCORS": true,
+          "stageMode": 0,
+          "stageName": "Prod"
+        },
+        "globallyEditable": true
+      }
+    },
+    "customTemplate": {
+      "dialect": "CloudFormation",
+      "definitions": null,
+      "syntax": "JSON"
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "editable": false,
+        "shouldPersist": false,
+        "displayOnly": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "nodejs",
+          "version": "2.644.0",
+          "dev": true,
+          "notRemovable": false
+        }
+      }
+    },
+    "rootNode": "3997e3fe-fee3-4ca4-abca-233fd0da4108",
+    "lambdaId": "da1d74a0-ff68-4c27-b504-26a1c9e272ec",
+    "additionalFiles": []
+  },
+  "PROJECT_META": {
+    "sigmaVersion": "1.4.4",
+    "projectName": "hash-tag-counter",
+    "projectDescription": "Counting hash tags of social media posts",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "language": "nodejs",
+    "platformRegions": {},
+    "lastSave": 1602053666185
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "hash-tag-counter",
+      "url": "https://github.com/zgma-test/hash-tag-counter"
+    }
+  }
+}
